@@ -1,0 +1,42 @@
+import React, { useState, useEffect } from 'react'
+import { Card, Container, MyImg } from './styles';
+
+export default function Home() {
+
+  const baseURL = 'https://rickandmortyapi.com/api/character'
+  const itemsURL = 'id';
+  const clientId = 'ce82444dd0884bd0b8dc789d11b014cb';
+  const clientSecret = 'c1cf3a78abe84956bf2fa30502885859';
+
+  let [tracks, setTracks] = useState([]);
+  let [isLoading, setIsLoading] = useState(false);
+  /* const [error, setError] = useState(null); */
+  
+  /* method: 'POST',
+  headers: {
+    'Content-Type' : 'application/x-www-form-urlencoded',
+    'Authorization' : 'Basic' + btoa(clientId + ':' + clientSecret)
+  },
+  body: 'grant_type=client_credentials' */
+
+  useEffect(() => {
+    setIsLoading(true);//mostramos loading
+    fetch(baseURL) 
+      .then(res => res.json())
+      .then((res) => setTracks(res.results))
+      .finally(() => setIsLoading(false));//ocultamos el loading
+  }, []); //El array vacío es el estado inicial y el effect no se volverá a ejecutar cuando su contenido cambie
+
+  const loading = (isLoading) ? "Loading..." : null;
+    
+  return (
+       <Container>
+         { loading }
+         { tracks.map((track, key) => (
+           <Card key={ itemsURL }>
+             <MyImg src={ track.image } />
+             { track.name }
+           </Card>))}
+       </Container>
+     );
+}

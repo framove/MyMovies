@@ -10,7 +10,7 @@ export default function Header() {
   const toggleTheme = useUpdateTheme();
 
   const theme = {
-      backgroundColor: darkTheme ? "#202124" : "#f5ba13",
+      backgroundColor: darkTheme ? "#202124" : "#ff3300",
       border: darkTheme && "solid 1px #eee"
   }
   return (
