@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import { login } from "./login";
 import { MyForm, Title, Welcome, Button, Input } from "./styles";
+import Movies from "../Movies/Movies"
 
 function reducer(state, action) {
   console.log(state);
@@ -89,6 +90,7 @@ export default function LoginReducer() {
           >
             Log out
           </Button>
+          <Movies />
           </Welcome>
       ) : (
         <MyForm onSubmit={onSubmit}>

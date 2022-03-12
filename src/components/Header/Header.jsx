@@ -1,30 +1,40 @@
-import React from 'react'
-import ModeNightIcon from '@mui/icons-material/ModeNight';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
+import React from "react";
+import ModeNightIcon from "@mui/icons-material/ModeNight";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
-import { MyHeader, Title } from './styles';
-import { useTheme, useUpdateTheme } from '../ThemeContext/ThemeContext';
+import { MyHeader, Title } from "./styles";
+import { useTheme, useUpdateTheme } from "../ThemeContext/ThemeContext";
 
 export default function Header() {
   const darkTheme = useTheme();
   const toggleTheme = useUpdateTheme();
 
   const theme = {
-      backgroundColor: darkTheme ? "#202124" : "#ff3300",
-      border: darkTheme && "solid 1px #eee"
-  }
+    backgroundColor: darkTheme ? "#202124" : "#ff3300",
+    border: darkTheme && "solid 1px #eee",
+  };
   return (
     <div>
-        <MyHeader style={theme}>
-          <Title>My SoundCloud</Title>
-          <div onClick={toggleTheme}>
-            {darkTheme ? (
-                    <Brightness4Icon fontSize='large' sx={{color:"white"}}/>
-                ) : (
-                    <ModeNightIcon fontSize='large' sx={{color:"white"}}/>
-                )}
-          </div>
-        </MyHeader>
+      <MyHeader style={theme}>
+        <Title>My Movies</Title>
+        {/* <Link to="/">
+          <button>Home</button>
+        </Link>
+        <Link to="/about">
+          <button>About</button>
+        </Link>
+        <Link to="/users">
+          <button>Users</button>
+        </Link> */}
+        <div onClick={toggleTheme}>
+          {darkTheme ? (
+            <Brightness4Icon fontSize="large" sx={{ color: "white" }} />
+          ) : (
+            <ModeNightIcon fontSize="large" sx={{ color: "white" }} />
+          )}
+        </div>
+      </MyHeader>
     </div>
-  )
+  );
 }

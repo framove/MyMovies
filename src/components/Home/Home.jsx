@@ -5,8 +5,7 @@ export default function Home() {
 
   const baseURL = 'https://rickandmortyapi.com/api/character'
   const itemsURL = 'id';
-  const clientId = 'ce82444dd0884bd0b8dc789d11b014cb';
-  const clientSecret = 'c1cf3a78abe84956bf2fa30502885859';
+  
 
   let [tracks, setTracks] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
