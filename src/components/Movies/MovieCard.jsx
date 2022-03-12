@@ -7,10 +7,8 @@ export default function MovieCard({ movie }) {
     const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
   return (
             <Card to={"/movies/" + movie.id}>
-              <Link>
                 <MyImg width={230} height={345} src={imageUrl} alt="{movie.title}" />
                 <div>{movie.title}</div>
-              </Link>
             </Card>
     
   )
