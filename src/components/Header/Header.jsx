@@ -1,37 +1,48 @@
 import React from "react";
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
-import { MyHeader, Title } from "./styles";
+import { Item, List, Logo, MyHeader, Title } from "./styles";
 import { useTheme, useUpdateTheme } from "../ThemeContext/ThemeContext";
+
 
 export default function Header() {
   const darkTheme = useTheme();
   const toggleTheme = useUpdateTheme();
 
   const theme = {
-    backgroundColor: darkTheme ? "#202124" : "#ff3300",
-    border: darkTheme && "solid 1px #eee",
+    backgroundColor: darkTheme ? "#2c2c31" : "#30575F",
+    borderBottom: darkTheme && "solid 2px #83838a",
   };
   return (
     <div>
       <MyHeader style={theme}>
-        <Title>My Movies</Title>
-        {/* <Link to="/">
-          <button>Home</button>
+      <Router>
+        <Link to="/movies">
+        <Logo><LiveTvIcon fontSize="large" sx={{ color: "#00abb5" }} />
+        <Title>My Movies</Title></Logo>
         </Link>
-        <Link to="/about">
-          <button>About</button>
-        </Link>
-        <Link to="/users">
-          <button>Users</button>
-        </Link> */}
+        <nav>
+          <List>
+            <Item>
+              <Link to="/">LOGIN</Link>
+            </Item>
+            <Item>
+              <Link to="/movies">MOVIES</Link>
+            </Item>
+            <Item>
+              <Link to="/">CONTACT</Link>
+            </Item>
+          </List>
+        </nav>
+        </Router>
         <div onClick={toggleTheme}>
           {darkTheme ? (
-            <Brightness4Icon fontSize="large" sx={{ color: "white" }} />
+            <Brightness4Icon fontSize="large" sx={{ color: "#00abb5" }} />
           ) : (
-            <ModeNightIcon fontSize="large" sx={{ color: "white" }} />
+            <ModeNightIcon fontSize="large" sx={{ color: "#00abb5" }} />
           )}
         </div>
       </MyHeader>

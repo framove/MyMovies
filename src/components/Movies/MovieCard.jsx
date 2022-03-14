@@ -1,15 +1,27 @@
 import React from 'react';
-import { Card } from './styles';
+import { Card, Text } from './styles';
 import { MyImg } from './styles';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { useTheme } from '../ThemeContext/ThemeContext';
+
 
 export default function MovieCard({ movie }) {
     const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-  return (
-            <Card to={"/movies/" + movie.id}>
+  
+    const darkTheme = useTheme();
+
+    const theme = {
+    color: darkTheme ? "#f8f9fa" : "#16161a",
+  };
+
+    return (
+        
+            <Card>
+              <Link to={"/movies/" + movie.id}>
                 <MyImg width={230} height={345} src={imageUrl} alt="{movie.title}" />
-                <div>{movie.title}</div>
+                <Text style={theme}>{movie.title}</Text>
+              </Link> 
             </Card>
-    
+        
   )
 }

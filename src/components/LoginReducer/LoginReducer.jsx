@@ -1,11 +1,13 @@
 import React, { useReducer } from "react";
 import { login } from "./login";
-import { MyForm, Title, Welcome, Button, Input } from "./styles";
+import { MyForm, Title, Button, Title2, Input, Welcome } from "./styles";
 import Movies from "../Movies/Movies"
+import { useTheme } from "../ThemeContext/ThemeContext";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function reducer(state, action) {
-  console.log(state);
-  console.log(action);
+  /* console.log(state);
+  console.log(action); */
   switch (action.type) {
     case "inputFields": {
       return {
@@ -77,25 +79,33 @@ export default function LoginReducer() {
     }
   };
 
+  const darkTheme = useTheme();
+
+    const theme = {
+    color: darkTheme ? "#f8f9fa" : "#16161a",
+    
+  };
+
   return (
     <div>
       {isLoggedIn ? (
+        <>
         <Welcome>
-          <Title>Hola {username}</Title>
+          <Title2 style={theme}>Hello {username}</Title2>
           
-          <Button
+          <LogoutIcon
             onClick={() => {
               dispatch({ type: "logout" });
             }}
-          >
-            Log out
-          </Button>
+            fontSize="medium" sx={{ color: "#00abb5" }} />
+        </Welcome>
           <Movies />
-          </Welcome>
+        </>
+          
       ) : (
         <MyForm onSubmit={onSubmit}>
           {error && <p>{error}</p>}
-          <Title>Please login!</Title>
+          <Title style={theme}>Please login!</Title>
           <Input
             type='text'
             value={username}

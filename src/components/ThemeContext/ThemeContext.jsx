@@ -15,7 +15,7 @@ export default function MyThemeProvider({ children }) {
     const [darkTheme, setDarkTheme] = useState(false);
 
     useEffect(() => {
-        document.body.style.backgroundColor = darkTheme ? "#202124" : "#eee";
+        document.body.style.backgroundColor = darkTheme ? "#16161a" : "#eee";
     }, [darkTheme])
 
     const toggleTheme = () => {
