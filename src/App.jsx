@@ -23,8 +23,8 @@ function App() {
             <Router>
               <Routes>
                 <Route path="/" element={<LoginReducer />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/movies/:movieId" element={<MovieDetails />} />
+                <Route path="movies" element={<Movies />} />
+                <Route path="movies/:movieId" element={<MovieDetails />} />
               </Routes>
             </Router>
           </ThemeProvider>

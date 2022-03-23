@@ -1,9 +1,9 @@
 import React, { useReducer } from "react";
 import { login } from "./login";
-import { MyForm, Title, Button, Title2, Input, Welcome } from "./styles";
-import Movies from "../Movies/Movies"
+import { MyForm, Title, Button, Input, ContainerLogin } from "./styles";
 import { useTheme } from "../ThemeContext/ThemeContext";
-import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from "react-router-dom";
+import Movies from "../Movies/Movies"
 
 function reducer(state, action) {
   /* console.log(state);
@@ -87,18 +87,9 @@ export default function LoginReducer() {
   };
 
   return (
-    <div>
+    <ContainerLogin>
       {isLoggedIn ? (
         <>
-        <Welcome>
-          <Title2 style={theme}>Hello {username}</Title2>
-          
-          <LogoutIcon
-            onClick={() => {
-              dispatch({ type: "logout" });
-            }}
-            fontSize="medium" sx={{ color: "#00abb5" }} />
-        </Welcome>
           <Movies />
         </>
           
@@ -128,11 +119,12 @@ export default function LoginReducer() {
               })
             }
           />
+          <Link to="/movies">
           <Button type='submit'>{isLoading ? "Logging in..." : "Login"}</Button>
+          </Link>
         </MyForm>
-        
-      )}
-    </div>
+        )}
+    </ContainerLogin>
     
   );
 }

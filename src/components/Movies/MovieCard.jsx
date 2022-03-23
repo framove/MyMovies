@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Text } from './styles';
 import { MyImg } from './styles';
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import {Link} from "react-router-dom";
 import { useTheme } from '../ThemeContext/ThemeContext';
 
 

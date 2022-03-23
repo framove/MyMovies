@@ -1,11 +1,12 @@
 import React from "react";
+import { useTheme, useUpdateTheme } from "../ThemeContext/ThemeContext";
+import { Link, BrowserRouter as Router } from "react-router-dom";
+
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Logo, MyHeader, Title } from "./styles";
 
-import { Item, List, Logo, MyHeader, Title } from "./styles";
-import { useTheme, useUpdateTheme } from "../ThemeContext/ThemeContext";
 
 
 export default function Header() {
@@ -15,28 +16,16 @@ export default function Header() {
   const theme = {
     backgroundColor: darkTheme ? "#2c2c31" : "#30575F",
     borderBottom: darkTheme && "solid 2px #83838a",
-  };
+  }
+  
   return (
     <div>
       <MyHeader style={theme}>
       <Router>
-        <Link to="/movies">
+        <Link to="movies">
         <Logo><LiveTvIcon fontSize="large" sx={{ color: "#00abb5" }} />
         <Title>My Movies</Title></Logo>
         </Link>
-        <nav>
-          <List>
-            <Item>
-              <Link to="/">LOGIN</Link>
-            </Item>
-            <Item>
-              <Link to="/movies">MOVIES</Link>
-            </Item>
-            <Item>
-              <Link to="/">CONTACT</Link>
-            </Item>
-          </List>
-        </nav>
         </Router>
         <div onClick={toggleTheme}>
           {darkTheme ? (

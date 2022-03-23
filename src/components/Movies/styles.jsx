@@ -46,3 +46,19 @@ export const Text = styled.p`
     text-align: center;
     color: black;
 `;
+
+export const Title2 = styled.h1`
+    text-align: center;
+    font-size: large;
+`;
+
+export const Welcome = styled.div`
+    text-align: center;
+    margin: auto 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-top: 1%;
+`;
