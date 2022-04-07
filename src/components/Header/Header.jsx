@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme, useUpdateTheme } from "../ThemeContext/ThemeContext";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
@@ -21,12 +21,12 @@ export default function Header() {
   return (
     <div>
       <MyHeader style={theme}>
-      <Router>
+      
         <Link to="movies">
         <Logo><LiveTvIcon fontSize="large" sx={{ color: "#00abb5" }} />
         <Title>My Movies</Title></Logo>
         </Link>
-        </Router>
+        
         <div onClick={toggleTheme}>
           {darkTheme ? (
             <Brightness4Icon fontSize="large" sx={{ color: "#00abb5" }} />

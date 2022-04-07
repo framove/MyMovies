@@ -19,8 +19,8 @@ function App() {
       <GlobalStyle />
         <MyThemeProvider>
           <ThemeProvider theme={theme}>
+          <Router>
             <Header />
-            <Router>
               <Routes>
                 <Route path="/" element={<LoginReducer />} />
                 <Route path="movies" element={<Movies />} />

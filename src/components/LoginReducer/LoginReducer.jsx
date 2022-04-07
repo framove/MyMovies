@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { login } from "./login";
 import { MyForm, Title, Button, Input, ContainerLogin } from "./styles";
 import { useTheme } from "../ThemeContext/ThemeContext";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Movies from "../Movies/Movies"
 
 function reducer(state, action) {
@@ -65,6 +65,7 @@ export default function LoginReducer() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { username, password, isLoading, error, isLoggedIn } = state;
 
+  const navigate = useNavigate()
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -73,6 +74,7 @@ export default function LoginReducer() {
     try {
       await login({ username, password });
       dispatch({ type: "success" });
+      navigate("/movies")
     } catch (error) {
       //debugger
       dispatch({ type: "error" });
@@ -88,12 +90,7 @@ export default function LoginReducer() {
 
   return (
     <ContainerLogin>
-      {isLoggedIn ? (
-        <>
-          <Movies />
-        </>
-          
-      ) : (
+      
         <MyForm onSubmit={onSubmit}>
           {error && <p>{error}</p>}
           <Title style={theme}>Please login!</Title>
@@ -119,11 +116,11 @@ export default function LoginReducer() {
               })
             }
           />
-          <Link to="/movies">
+          
           <Button type='submit'>{isLoading ? "Logging in..." : "Login"}</Button>
-          </Link>
+        
         </MyForm>
-        )}
+        
     </ContainerLogin>
     
   );
